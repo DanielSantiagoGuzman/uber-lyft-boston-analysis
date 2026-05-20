@@ -46,7 +46,7 @@ Ride-hailing platforms operate in a competitive, surge-driven pricing environmen
 | `price` | 55,095 (7.9%) | Taxi product only: fare not collected |
 | `Payment Method` | 591,071 (85.3%) | Dataset-level collection gap, both platforms |
 | `Driver/Customer Ratings` | 600,071 (86.6%) | Sparse collection, both platforms |
-| `surge_multiplier` (Uber) | — | Always 1.0 — not captured at row level |
+| `surge_multiplier` (Uber) | — | Always 1.0: not captured at row level |
 
 ---
 
@@ -106,13 +106,13 @@ Five analytical sections across 10 charts:
 | E · Ratings | Driver rating distributions, tier-level comparison | 2 |
 
 ### Tableau Dashboard: Uber Q4 KPIs
-Interactive dashboard visualizing Uber-specific Q4 metrics: ride volume, pricing by product, top corridors, and temporal demand patterns. Built in Tableau Desktop — open `Uber Q4 KPIs.twbx` directly in Tableau Desktop or Tableau Public.
+Interactive dashboard visualizing Uber-specific Q4 metrics: ride volume, pricing by product, top corridors, and temporal demand patterns. Built in Tableau Desktop; open `Uber Q4 KPIs.twbx` directly in Tableau Desktop or Tableau Public.
 
 ---
 
 ## Key Findings
 
-**Demand:** Ride volume is relatively flat across the 24-hour cycle, with mild peaks around midnight and 23:00. Both platforms follow nearly identical hourly curves — Uber runs ~25% higher volume at every hour but shows no platform-specific use case (e.g. Uber for airports, Lyft for bars). Top corridors are compact urban routes: Financial District ↔ South Station, West End ↔ Fenway.
+**Demand:** Ride volume is relatively flat across the 24-hour cycle, with mild peaks around midnight and 23:00. Both platforms follow nearly identical hourly curves, Uber runs ~25% higher volume at every hour but shows no platform-specific use case (e.g. Uber for airports, Lyft for bars). Top corridors are compact urban routes: Financial District ↔ South Station, West End ↔ Fenway.
 
 **Pricing:** Lyft's overall average ($17.36) exceeds Uber's ($15.78), but this reflects product mix: Uber's Taxi product has no price data and its higher Economy volume pulls the average down. Tier-for-tier, pricing is competitive. Price-distance correlation is moderate for both platforms (Lyft r=0.361, Uber r=0.337) — tier and surge explain as much of the fare as raw distance.
 
