@@ -91,7 +91,7 @@ Cleaned from raw — the companion "pre-cleaned" file (audited on a sample) only
 - Strips whitespace from all categorical columns
 - Assigns consistent ride tier labels across both platforms
 - Adds availability flags (`price_available`, `payment_data_available`, `has_ratings`) for transparent downstream filtering
-- Flags statistical price outliers without removing them — all 5,114 outliers are Lyft premium products (Lux Black, Lux Black XL), consistent with Lyft's higher premium ceiling
+- Flags statistical price outliers without removing them; all 5,114 outliers are Lyft premium products (Lux Black, Lux Black XL), consistent with Lyft's higher premium ceiling
 - Exports `rides_clean.parquet`
 
 ### `EDA.ipynb`: Exploratory Data Analysis
