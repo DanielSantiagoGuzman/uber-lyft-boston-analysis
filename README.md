@@ -2,16 +2,16 @@
 
 **Uber as focal platform · Lyft as competitive benchmark**
 
-A personal project built independently outside of coursework — applying SQL, Python, and Tableau to 693,000+ Uber and Lyft ride bookings across 12 Boston neighborhoods in November–December 2018. The analysis covers demand patterns, pricing dynamics, surge behavior, weather effects, and rider ratings, with a Tableau dashboard focused on Uber Q4 KPIs.
+A personal project built independently, applying SQL, Python, and Tableau to 693,000+ Uber and Lyft ride bookings across 12 Boston neighborhoods in November–December 2018. The analysis covers demand patterns, pricing dynamics, surge behavior, weather effects, and rider ratings, with a Tableau dashboard focused on Uber Q4 KPIs.
 
 ---
 
 ## TL;DR
 
 - **693,071 rides** across Uber (55.6%) and Lyft (44.6%) in Boston Q4 2018
-- Lyft's average fare ($17.36) exceeds Uber's ($15.78) — driven by product mix, not tier-for-tier pricing
+- Lyft's average fare ($17.36) exceeds Uber's ($15.78), driven by product mix, not tier-for-tier pricing
 - Only **6.9% of Lyft rides** carry any surge; Uber surge is not captured at the row level
-- Price-distance correlation is moderate (~0.35), not strong — tier and surge explain as much as distance
+- Price-distance correlation is moderate (~0.35), not strong; tier and surge explain as much as distance
 - Weather has **effectively no impact on pricing** ($0.22 spread across all conditions)
 - Driver ratings are identical across both platforms: mean **4.23**, <0.02 variation across all tiers
 
@@ -22,7 +22,7 @@ A personal project built independently outside of coursework — applying SQL, P
 Ride-hailing platforms operate in a competitive, surge-driven pricing environment where demand, geography, time of day, and weather all interact. This project treats **Uber as the focal platform** and **Lyft as a competitive benchmark** to answer five questions:
 
 1. When do Bostonians ride, and does demand differ by platform or neighborhood?
-2. How does Uber price across service tiers — and how does Lyft compare?
+2. How does Uber price across service tiers, and how does Lyft compare?
 3. When and how aggressively does surge pricing activate?
 4. Does weather shift demand or pricing behavior?
 5. What does rider satisfaction look like across platforms and tiers?
@@ -43,7 +43,7 @@ Ride-hailing platforms operate in a competitive, surge-driven pricing environmen
 
 | Column | Null count | Cause |
 |---|---|---|
-| `price` | 55,095 (7.9%) | Taxi product only — fare not collected |
+| `price` | 55,095 (7.9%) | Taxi product only: fare not collected |
 | `Payment Method` | 591,071 (85.3%) | Dataset-level collection gap, both platforms |
 | `Driver/Customer Ratings` | 600,071 (86.6%) | Sparse collection, both platforms |
 | `surge_multiplier` (Uber) | — | Always 1.0 — not captured at row level |
@@ -73,7 +73,7 @@ uber-lyft-boston-analysis/
 
 ## Methodology
 
-### `Structure_SQL.py` — Data Structuring & Granularity
+### `Structure_SQL.py`: Data Structuring & Granularity
 BigQuery-compatible SQL executed locally via DuckDB. Covers:
 - Schema profiling and type casting
 - Granularity confirmation: one row = one unique ride booking
@@ -83,7 +83,7 @@ BigQuery-compatible SQL executed locally via DuckDB. Covers:
 
 > SQL written in BigQuery-compatible dialect. Queries run unchanged on BigQuery, Redshift, or Snowflake.
 
-### `Data_cleaning.ipynb` — Data Cleaning
+### `Data_cleaning.ipynb`: Data Cleaning
 Cleaned from raw — the companion "pre-cleaned" file (audited on a sample) only made cosmetic changes and left all structural nulls intact. This notebook:
 - Renames all columns to `snake_case`
 - Parses datetime and derives `date`, `day_of_week`, `week_number`, `is_weekend`
@@ -94,7 +94,7 @@ Cleaned from raw — the companion "pre-cleaned" file (audited on a sample) only
 - Flags statistical price outliers without removing them — all 5,114 outliers are Lyft premium products (Lux Black, Lux Black XL), consistent with Lyft's higher premium ceiling
 - Exports `rides_clean.parquet`
 
-### `EDA.ipynb` — Exploratory Data Analysis
+### `EDA.ipynb`: Exploratory Data Analysis
 Five analytical sections across 10 charts:
 
 | Section | Focus | Charts |
@@ -105,22 +105,22 @@ Five analytical sections across 10 charts:
 | D · Weather | Volume by condition, price by condition, temperature correlation | 3 |
 | E · Ratings | Driver rating distributions, tier-level comparison | 2 |
 
-### Tableau Dashboard — Uber Q4 KPIs
+### Tableau Dashboard: Uber Q4 KPIs
 Interactive dashboard visualizing Uber-specific Q4 metrics: ride volume, pricing by product, top corridors, and temporal demand patterns. Built in Tableau Desktop — open `Uber Q4 KPIs.twbx` directly in Tableau Desktop or Tableau Public.
 
 ---
 
 ## Key Findings
 
-**Demand** — Ride volume is relatively flat across the 24-hour cycle, with mild peaks around midnight and 23:00. Both platforms follow nearly identical hourly curves — Uber runs ~25% higher volume at every hour but shows no platform-specific use case (e.g. Uber for airports, Lyft for bars). Top corridors are compact urban routes: Financial District ↔ South Station, West End ↔ Fenway.
+**Demand:** Ride volume is relatively flat across the 24-hour cycle, with mild peaks around midnight and 23:00. Both platforms follow nearly identical hourly curves — Uber runs ~25% higher volume at every hour but shows no platform-specific use case (e.g. Uber for airports, Lyft for bars). Top corridors are compact urban routes: Financial District ↔ South Station, West End ↔ Fenway.
 
-**Pricing** — Lyft's overall average ($17.36) exceeds Uber's ($15.78), but this reflects product mix: Uber's Taxi product has no price data and its higher Economy volume pulls the average down. Tier-for-tier, pricing is competitive. Price-distance correlation is moderate for both platforms (Lyft r=0.361, Uber r=0.337) — tier and surge explain as much of the fare as raw distance.
+**Pricing:** Lyft's overall average ($17.36) exceeds Uber's ($15.78), but this reflects product mix: Uber's Taxi product has no price data and its higher Economy volume pulls the average down. Tier-for-tier, pricing is competitive. Price-distance correlation is moderate for both platforms (Lyft r=0.361, Uber r=0.337) — tier and surge explain as much of the fare as raw distance.
 
-**Surge** — Only 6.9% of Lyft rides carry any surge above baseline. Surge rate is broadly flat across all hours of the day (~6–8%), with a mild peak at 13:00. The expected late-night bar-closing spike is not present — suggesting supply constraints are distributed across all hours rather than concentrated at night. Uber surge is not captured at the row level in this dataset.
+**Surge:** Only 6.9% of Lyft rides carry any surge above baseline. Surge rate is broadly flat across all hours of the day (~6–8%), with a mild peak at 13:00. The expected late-night bar-closing spike is not present — suggesting supply constraints are distributed across all hours rather than concentrated at night. Uber surge is not captured at the row level in this dataset.
 
-**Weather** — Overcast is the dominant condition by volume (156K rides), reflecting Boston's Q4 climate — not a demand preference. Price differences across all nine weather conditions span only $0.22 (Mostly Cloudy $16.60 → Drizzle $16.38). Temperature shows r = -0.001 with price. Weather has no meaningful impact on pricing.
+**Weather:** Overcast is the dominant condition by volume (156K rides), reflecting Boston's Q4 climate — not a demand preference. Price differences across all nine weather conditions span only $0.22 (Mostly Cloudy $16.60 → Drizzle $16.38). Temperature shows r = -0.001 with price. Weather has no meaningful impact on pricing.
 
-**Ratings** — Both platforms produce an identical mean driver rating of 4.23, with less than 0.02 points of variation across all six ride tiers. Ratings are available for only 13.4% of rides — conclusions are descriptive of that subset only.
+**Ratings:** Both platforms produce an identical mean driver rating of 4.23, with less than 0.02 points of variation across all six ride tiers. Ratings are available for only 13.4% of rides — conclusions are descriptive of that subset only.
 
 ---
 
@@ -164,4 +164,4 @@ The Tableau workbook (`Data Viz/Tableau files/Uber Q4 KPIs.twbx`) opens directly
 
 ## About This Project
 
-Built independently in personal time — not a class assignment. Topics applied here draw on coursework in data engineering, experimentation, and analytics, but the dataset selection, problem framing, analysis design, and tooling choices were made entirely outside of any academic context.
+Built independently in personal time; not a class assignment. Topics applied here draw on coursework in data engineering, experimentation, and analytics, but the dataset selection, problem framing, analysis design, and tooling choices were made entirely outside of any academic context.
