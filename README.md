@@ -112,15 +112,15 @@ Interactive dashboard visualizing Uber-specific Q4 metrics: ride volume, pricing
 
 ## Key Findings
 
-**Demand:** Ride volume is relatively flat across the 24-hour cycle, with mild peaks around midnight and 23:00. Both platforms follow nearly identical hourly curves, Uber runs ~25% higher volume at every hour but shows no platform-specific use case (e.g. Uber for airports, Lyft for bars). Top corridors are compact urban routes: Financial District ↔ South Station, West End ↔ Fenway.
+**Demand:** Ride volume is relatively flat across the 24-hour cycle, with mild peaks around midnight and 23:00. Both platforms follow nearly identical hourly curves; Uber runs ~25% higher volume at every hour but shows no platform-specific use case (e.g., Uber for airports, Lyft for bars). Top corridors are compact urban routes: Financial District ↔ South Station, West End ↔ Fenway.
 
-**Pricing:** Lyft's overall average ($17.36) exceeds Uber's ($15.78), but this reflects product mix: Uber's Taxi product has no price data and its higher Economy volume pulls the average down. Tier-for-tier, pricing is competitive. Price-distance correlation is moderate for both platforms (Lyft r=0.361, Uber r=0.337) — tier and surge explain as much of the fare as raw distance.
+**Pricing:** Lyft's overall average ($17.36) exceeds Uber's ($15.78), but this reflects product mix: Uber's Taxi product has no price data and its higher Economy volume pulls the average down. Tier-for-tier, pricing is competitive. Price-distance correlation is moderate for both platforms (Lyft r=0.361, Uber r=0.337); tier and surge explain as much of the fare as raw distance.
 
-**Surge:** Only 6.9% of Lyft rides carry any surge above baseline. Surge rate is broadly flat across all hours of the day (~6–8%), with a mild peak at 13:00. The expected late-night bar-closing spike is not present — suggesting supply constraints are distributed across all hours rather than concentrated at night. Uber surge is not captured at the row level in this dataset.
+**Surge:** Only 6.9% of Lyft rides carry any surge above baseline. Surge rate is broadly flat across all hours of the day (~6–8%), with a mild peak at 13:00. The expected late-night bar-closing spike is not present, suggesting supply constraints are distributed across all hours rather than concentrated at night. Uber surge is not captured at the row level in this dataset.
 
-**Weather:** Overcast is the dominant condition by volume (156K rides), reflecting Boston's Q4 climate — not a demand preference. Price differences across all nine weather conditions span only $0.22 (Mostly Cloudy $16.60 → Drizzle $16.38). Temperature shows r = -0.001 with price. Weather has no meaningful impact on pricing.
+**Weather:** Overcast is the dominant condition by volume (156K rides), reflecting Boston's Q4 climate, not a demand preference. Price differences across all nine weather conditions span only $0.22 (Mostly Cloudy $16.60 → Drizzle $16.38). Temperature shows r = -0.001 with price. Weather has no meaningful impact on pricing.
 
-**Ratings:** Both platforms produce an identical mean driver rating of 4.23, with less than 0.02 points of variation across all six ride tiers. Ratings are available for only 13.4% of rides — conclusions are descriptive of that subset only.
+**Ratings:** Both platforms produce an identical mean driver rating of 4.23, with less than 0.02 points of variation across all six ride tiers. Ratings are available for only 13.4% of rides; conclusions are descriptive of that subset only.
 
 ---
 
@@ -128,7 +128,7 @@ Interactive dashboard visualizing Uber-specific Q4 metrics: ride volume, pricing
 
 | Tool | Purpose |
 |---|---|
-| DuckDB | BigQuery-compatible SQL — schema profiling, segmentation, structural null audit |
+| DuckDB | BigQuery-compatible SQL: schema profiling, segmentation, structural null audit |
 | pandas | Data cleaning, type handling, feature engineering |
 | matplotlib · seaborn | Visualization |
 | pyarrow | Parquet I/O |
