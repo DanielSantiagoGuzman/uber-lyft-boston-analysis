@@ -2,7 +2,7 @@
 
 **Uber as focal platform · Lyft as competitive benchmark**
 
-A personal project built independently, applying SQL, Python, and Tableau to 693,000+ Uber and Lyft ride bookings across 12 Boston neighborhoods in November–December 2018. The analysis covers demand patterns, pricing dynamics, surge behavior, weather effects, and rider ratings, with a Tableau dashboard focused on Uber Q4 KPIs.
+A personal project built independently, applying SQL, Python, and Tableau to more than 693,000 Uber and Lyft ride bookings across 12 Boston neighborhoods in November–December 2018. The analysis covers demand patterns, pricing dynamics, surge behavior, weather effects, and rider ratings, with a Tableau dashboard focused on Uber Q4 KPIs.
 
 ---
 
